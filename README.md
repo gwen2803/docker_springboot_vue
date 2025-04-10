@@ -9,12 +9,13 @@ Docker Compose로 실행 가능
 
 
 
-## ✅ 사전 필요 조건
+## ✅ 주요 기술 스택
 
-* Docker (https://www.docker.com/)
-* Docker Compose
-* JDK 17 (로컬에서 빌드 테스트 시)
-* Node.js 18 이상 (프론트엔드 빌드 테스트 시)
+|역영|기술|
+|:---|:---|
+|프론트엔드|Node.js 18, Vue 3, Vite, TypeScript|
+|백엔드|Spring Boot, Java 17, Gradle|
+|인프라|Docker, Docker Compose|
 
 
 
