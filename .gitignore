@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+dist/
+npm-debug.log*
+yarn-error.log*
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+hs_err_pid*
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# IDE - VSCode
+.vscode/
+
+# Docker / 환경 변수
+.env
+.env.*
+docker-compose.override.yml
+
+# 기타
+*.swp
+*~
+
