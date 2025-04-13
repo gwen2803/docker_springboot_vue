@@ -1,12 +1,11 @@
-# backend/Dockerfile
+# 1. OpenJDK 이미지 가져오기
+FROM openjdk:17-jdk-slim
 
-FROM gradle:8.3.0-jdk17 AS build
-WORKDIR /app
-COPY . .
-RUN gradle build --no-daemon
+# 2. 애플리케이션 JAR 파일을 컨테이너에 복사
+COPY target/demo-0.0.1-SNAPSHOT.jar demo.jar
 
-FROM eclipse-temurin:17-jdk
-WORKDIR /app
-COPY --from=build /app/app/build/libs/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# 3. 애플리케이션 포트 설정 (기본적으로 8080 사용)
+EXPOSE 8080
 
+# 4. 애플리케이션 실행 명령어
+ENTRYPOINT ["java", "-jar", "/demo.jar"]

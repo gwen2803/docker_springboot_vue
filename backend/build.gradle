@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JPA 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // MySQL 의존성
+    implementation 'mysql:mysql-connector-java:8.0.32'
+    // Spring Web 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // 테스트 의존성
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    // Spring Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // JWT
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JSON 직렬화용
+
+    // (선택) 패스워드 인코딩에 BCrypt 사용
+    implementation 'org.springframework.security:spring-security-crypto'
+    
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    implementation 'io.github.cdimascio:java-dotenv:5.2.2'
+
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+}
+
+test {
+    useJUnitPlatform()
+}
