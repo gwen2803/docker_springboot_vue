@@ -28,12 +28,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column
-    private String refreshToken;
-
-    @Column(nullable = false)
-    private boolean oauthUser;
-
     @CreationTimestamp
     private LocalDateTime createdAt;
 

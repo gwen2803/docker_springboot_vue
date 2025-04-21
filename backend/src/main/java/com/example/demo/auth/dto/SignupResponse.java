@@ -1,12 +1,15 @@
 package com.example.demo.auth.dto;
 
-import lombok.Builder;
+import com.example.demo.user.entity.User;
+import com.example.demo.user.entity.Token;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.Builder;
 
 @Getter
+@Setter
 @Builder
 public class SignupResponse {
-    private int status;
-    private String message;
-    private Object json; // 회원가입에서는 일반적으로 null
+    private User user;
+    private Token token;
 }

@@ -56,4 +56,9 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
+
+    // 토큰 유효성 검사
+    public boolean validateToken(String token) {
+        return extractAllClaims(token).getExpiration().after(new Date());
+    }
 }
