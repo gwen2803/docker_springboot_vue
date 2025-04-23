@@ -25,6 +25,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+            .cors(cors -> cors.disable())
             .csrf(csrf -> csrf.disable()) // CSRF 비활성화 (API만 쓰는 경우 보통 끔)
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/login", "/api/auth/signup", "/api/auth/forgot-password", "/api/auth/reset-password", "/api/auth/forgot-password", "/api/auth/reset-password", "/api/auth/change-password", "/api/auth/refresh-token", "/swagger-ui/**", "/v3/api-docs/**").permitAll() // 인증 없이 접근 허용
