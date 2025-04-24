@@ -1,7 +1,7 @@
 <template>
-  <div class="login-container">
-    <h2>로그인</h2>
-    <form @submit.prevent="login">
+  <div class="signup-container">
+    <h2>회원가입</h2>
+    <form @submit.prevent="signup">
       <div class="form-group">
         <label for="email">이메일</label>
         <input v-model="email" type="email" id="email" placeholder="이메일을 입력하세요" required />
@@ -10,15 +10,14 @@
         <label for="password">비밀번호</label>
         <input v-model="password" type="password" id="password" placeholder="비밀번호를 입력하세요" required />
       </div>
-      <button type="submit" class="login-button">로그인</button>
-      <div class="link">
-        <router-link to="/forgot-password">비밀번호를 잊으셨나요?</router-link>
-        <br />
-        <router-link to="/signup">회원가입</router-link>
+      <div class="form-group">
+        <label for="nickname">닉네임</label>
+        <input v-model="nickname" type="text" id="nickname" placeholder="닉네임을 입력하세요" required />
       </div>
+      <button type="submit" class="signup-button">회원가입</button>
     </form>
     <div class="link">
-      <router-link to="/forgot-password">비밀번호를 잊으셨나요?</router-link>
+      <router-link to="/login">이미 계정이 있으신가요?</router-link>
     </div>
   </div>
 </template>
@@ -28,29 +27,27 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '../stores/user';
 
-// Pinia store 사용
+const email = ref('');
+const password = ref('');
+const nickname = ref('');
+
 const store = useUserStore();
 const router = useRouter();
 
-// 로컬 상태 변수
-const email = ref('');
-const password = ref('');
-
-// 로그인 함수
-const login = async () => {
+const signup = async () => {
   try {
-    // store의 login 액션 호출
-    await store.login(email.value, password.value);
-    router.push('/profile'); // 로그인 후 프로필 페이지로 이동
+    await store.signup(email.value, password.value, nickname.value);
+    alert('회원가입이 완료되었습니다!');
+    router.push('/login');
   } catch (error) {
-    console.error('로그인 실패:', error);
-    alert('로그인에 실패했습니다. 다시 시도해 주세요.');
+    console.error('회원가입 실패:', error);
+    alert('회원가입에 실패했습니다.');
   }
 };
 </script>
 
 <style scoped>
-.login-container {
+.signup-container {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
@@ -83,7 +80,7 @@ input {
 button {
   width: 100%;
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #2196F3;
   color: white;
   font-size: 16px;
   border: none;
@@ -92,7 +89,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #1976D2;
 }
 
 .link {

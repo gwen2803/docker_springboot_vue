@@ -82,6 +82,20 @@ export const useUserStore = defineStore('user', {
       }
     },
 
+    async signup(email: string, password: string, nickname: string) {
+      try {
+        const response = await axios.post('/api/auth/signup', {
+          email: email,
+          password: password,
+          nickname: nickname,
+        });
+        return response.data; // 성공 시 응답 데이터 반환
+      } catch (error) {
+        console.error('회원가입 실패:', error);
+        throw new Error('회원가입에 실패했습니다.');
+      }
+    },
+
     // 토큰 갱신
     async refreshAccessToken() {
       try {

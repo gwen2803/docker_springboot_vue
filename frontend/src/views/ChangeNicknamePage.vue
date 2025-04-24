@@ -31,6 +31,7 @@ const changeNickname = async () => {
     alert('닉네임이 성공적으로 변경되었습니다.');
     router.push('/profile'); // 변경 후 프로필 페이지로 이동
   } catch (error) {
+    console.error('닉네임 변경 실패:', error);
     alert('닉네임 변경에 실패했습니다.');
   }
 };

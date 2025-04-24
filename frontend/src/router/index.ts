@@ -4,17 +4,18 @@ import type { RouteRecordRaw } from 'vue-router';
 import LoginPage from '../views/LoginPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
 import ChangeNicknamePage from '../views/ChangeNickname.vue';
+import ChangePasswordPage from '../views/ChangePasswordPage.vue';
+import ForgotPasswordPage from '../views/ForgotPasswordPage.vue';
+import SignupPage from '../views/SignupPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
-  { path: '/', redirect: '/login' },
+  { path: '/', redirect: '/login' },  
   { path: '/login', component: LoginPage },
   { path: '/profile', component: ProfilePage },
-  { path: '/forgot-password', component: () => import('../pages/ForgotPasswordPage.vue') },
-  { path: '/reset-password/:token', component: () => import('../pages/ResetPasswordPage.vue') },
-  { path: '/profile', component: () => import('../pages/ProfilePage.vue') },
-  { path: '/change-nickname', component: () => import('../pages/ChangeNicknamePage.vue') },
-  { path: '/change-password', component: () => import('../pages/ChangePasswordPage.vue') },
-  { path: '/delete-account', component: () => import('../pages/DeleteAccountPage.vue') },
+  { path: '/forgot-password', component: ForgotPasswordPage },
+  { path: '/change-nickname', component: ChangeNicknamePage },
+  { path: '/change-password', component: ChangePasswordPage },
+  { path: '/signup', component: SignupPage },
 ]
 
 const router = createRouter({
